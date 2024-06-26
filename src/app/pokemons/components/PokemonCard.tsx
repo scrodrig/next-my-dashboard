@@ -43,7 +43,7 @@ export const PokemonCard = ({ pokemon }: Props) => {
               <p className="text-sm font-medium text-gray-800 leading-none">
                 Favorite?
               </p>
-              <p className="text-xs text-gray-500">View your pokemon</p>
+              <p className="text-xs text-gray-500">More info ...</p>
             </div>
           </Link>
         </div>
