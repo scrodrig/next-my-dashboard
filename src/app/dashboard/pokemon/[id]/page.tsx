@@ -4,10 +4,13 @@ interface Props {
   params: { id: string };
 }
 
-export const metadata = {
-  title: "Pokemon",
-  description: "Pokemon page",
-};
+export async function generateMetadata({ params }: Props) {
+  const { id, name }: Pokemon = await getPokemon(params.id);
+  return {
+    title: `${id} - ${name}`,
+    description: `${name} pokemon page`,
+  };
+}
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
@@ -24,7 +27,7 @@ export default async function PokemonPage({ params: { id } }: Props) {
     <div>
       <h1>Hello Page pokemon {id}</h1>
       <div>
-        <h2>{JSON.stringify(pokemon)}</h2>
+        <h2>{pokemon.name}</h2>
       </div>
     </div>
   );
