@@ -1,40 +1,48 @@
-import { Pokemon } from "@/pokemons";
-import Image from "next/image";
-import { notFound } from "next/navigation";
+import { Pokemon } from '@/pokemons'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
 interface Props {
-  params: { id: string };
+  params: { id: string }
+}
+
+export async function generateStaticParams() {
+  const staticInitialPokemons = Array.from(
+    { length: 151 },
+    (_, i) => `${i + 1}`
+  )
+  return staticInitialPokemons.map((id) => ({ id: id }))
 }
 
 export async function generateMetadata({ params }: Props) {
   try {
-    const { id, name }: Pokemon = await getPokemon(params.id);
+    const { id, name }: Pokemon = await getPokemon(params.id)
     return {
       title: `${id} - ${name}`,
       description: `${name} pokemon page`,
-    };
+    }
   } catch (e) {
     return {
       title: `pokemon page`,
       description: `pokemon page`,
-    };
+    }
   }
 }
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
   try {
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-      cache: "force-cache",
+      // cache: 'force-cache',
       next: { revalidate: 60 * 60 * 24 * 30 * 3 }, //! 3 months (60 seconds * 60 minutes * 24 hours * 30 days * 3 months)
-    }).then((res) => res.json());
+    }).then((res) => res.json())
 
-    return data;
+    return data
   } catch (error) {
-    notFound();
+    notFound()
   }
-};
+}
 
 export default async function PokemonPage({ params }: Props) {
-  const pokemon = await getPokemon(params.id);
+  const pokemon = await getPokemon(params.id)
 
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">
@@ -45,7 +53,7 @@ export default async function PokemonPage({ params }: Props) {
           </h1>
           <div className="flex flex-col justify-center items-center">
             <Image
-              src={pokemon.sprites.other?.dream_world.front_default ?? ""}
+              src={pokemon.sprites.other?.dream_world.front_default ?? ''}
               width={150}
               height={150}
               alt={`Imagen del pokemon ${pokemon.name}`}
@@ -120,5 +128,5 @@ export default async function PokemonPage({ params }: Props) {
         </div>
       </div>
     </div>
-  );
+  )
 }
