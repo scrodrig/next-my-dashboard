@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-    // cache: "force-cache",
+    cache: "force-cache",
     next: { revalidate: 60 * 60 * 24 * 30 * 3 }, //! 3 months (60 seconds * 60 minutes * 24 hours * 30 days * 3 months)
   }).then((res) => res.json());
 
