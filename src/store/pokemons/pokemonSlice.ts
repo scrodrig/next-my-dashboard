@@ -9,10 +9,11 @@ interface PokemonState {
 const initialState: PokemonState = {
   '1': { id: 1, name: 'bulbasaur' },
   '4': { id: 4, name: 'charmander' },
+  '25': { id: 25, name: 'pikachu' },
 }
 
 const pokemonSlice = createSlice({
-  name: 'pokemon',
+  name: 'pokemons',
   initialState,
   reducers: {
     toggleFavorite(state, action: PayloadAction<SimplePokemon>) {
