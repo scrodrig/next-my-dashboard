@@ -11,15 +11,35 @@ interface Props {
   value?: number
 }
 
+interface CounterResponse {
+  method: string
+  counter: number
+}
+
+const getApiCounter = async (): Promise<CounterResponse> => {
+  const data: CounterResponse = await fetch('/api/counter').then((res) =>
+    res.json()
+  )
+  return data
+}
+
 export const CartCounter = ({ value = 0 }: Props) => {
   // const [counter, setCounter] = useState(value);
 
   const counter = useAppSelector((state) => state.counter.counter)
   const dispatch = useAppDispatch()
 
+  //! First way to call the action
+  // useEffect(() => {
+  //   dispatch(initCounterState(value))
+  // }, [dispatch, value])
+
+  //! Second way to call the action
   useEffect(() => {
-    dispatch(initCounterState(value))
-  }, [dispatch, value])
+    getApiCounter().then((data) => {
+      dispatch(initCounterState(data.counter))
+    })
+  }, [dispatch])
 
   return (
     <>
