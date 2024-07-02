@@ -1,5 +1,6 @@
 import { FavoritePokemons } from '@/pokemons'
 import React from 'react'
+import { IoHeartOutline } from 'react-icons/io5'
 
 export default async function FavoritesPage() {
   return (
