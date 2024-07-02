@@ -34,6 +34,16 @@ export const SimpleWidget = ({ title, subtitle, label, icon, href }: Props) => {
             </div>
           </div>
         </div>
+
+        <div className="flex w-full items-center justify-end text-right border-t-2 border-gray-100 mt-2">
+          {href && (
+            <Link
+              href={href || '#'}
+              className="text-indigo-600 text-xs font-medium">
+              Go to page
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   )
