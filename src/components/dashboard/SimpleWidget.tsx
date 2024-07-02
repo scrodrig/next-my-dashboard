@@ -21,22 +21,18 @@ export const SimpleWidget = ({ title, subtitle, label, icon, href }: Props) => {
         </div>
         <div className="my-3">
           <div className="flex flex-row items-center justify-center space-x-1 ">
-            {icon && <div id="icon">{icon}</div>}
+            {icon && (
+              <Link
+                href={href || '#'}
+                className="text-indigo-600 text-xs font-medium">
+                <div id="icon">{icon}</div>
+              </Link>
+            )}
             <div id="temp" className="text-center">
               <h4 className="text-4xl">{title}</h4>
               {subtitle && <p className="text-xs text-gray-500">{subtitle}</p>}
             </div>
           </div>
-        </div>
-
-        <div className="flex w-full items-center justify-center text-right border-t-2 border-gray-100 mt-2">
-          {href && (
-            <Link
-              href={href || '#'}
-              className="text-indigo-600 text-xs font-medium">
-              More
-            </Link>
-          )}
         </div>
       </div>
     </div>
