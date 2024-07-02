@@ -1,4 +1,4 @@
-import { PokemonGrid } from '@/pokemons'
+import { FavoritePokemons } from '@/pokemons'
 import React from 'react'
 
 export default async function FavoritesPage() {
@@ -8,7 +8,7 @@ export default async function FavoritesPage() {
         <small className="text-5xl my-2 text-red-600">Global state: </small>
         Pokemon Favorites
       </span>
-      <PokemonGrid pokemons={[]} />
+      <FavoritePokemons />
     </div>
   )
 }
