@@ -1,5 +1,5 @@
-import { Sidebar } from "@/components";
-import Link from "next/link";
+import Link from 'next/link'
+import { Sidebar } from '@/components'
 
 export default function NotFound() {
   return (
@@ -27,5 +27,5 @@ export default function NotFound() {
         </div>
       </div>
     </div>
-  );
+  )
 }
