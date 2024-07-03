@@ -2,11 +2,15 @@ import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './counter/CounterSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import pokemonsReducer from './pokemons/pokemonSlice'
+import { localStorateMiddleware } from './middlewares/local-storage-middleware'
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
     pokemons: pokemonsReducer,
+  },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(localStorateMiddleware) as any
   },
 })
 
