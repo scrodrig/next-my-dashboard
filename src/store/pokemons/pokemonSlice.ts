@@ -26,7 +26,7 @@ const pokemonSlice = createSlice({
       } else {
         state[id] = pokemon
       }
-      //! This is an antipattern and should be avoided, Redux pattern needs pure functions
+      // //! This is an antipattern and should be avoided, Redux pattern needs pure functions
       localStorage.setItem('favorite-pokemons', JSON.stringify(state))
     },
   },
