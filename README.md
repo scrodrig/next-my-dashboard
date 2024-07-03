@@ -17,3 +17,5 @@ To get started with Next-My-Dashboard, follow these steps:
 2. Install dependencies: `npm install`
 3. Start the development server: `npm run dev`
 4. Open your browser and navigate to `http://localhost:3000`
+
+![image](https://github.com/scrodrig/next-my-dashboard/assets/5466692/691c3512-b12f-4f85-8792-dcd171be823d)
